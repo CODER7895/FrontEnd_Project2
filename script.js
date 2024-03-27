@@ -61,17 +61,18 @@ function addPopularProducts() {
 }
 
 function addToCart() {
-    document.getElementById("products").addEventListener("click", (details) => {
-        if (details.target.classList.contains('add')) {
-            cart.push(products[details.target.dataset.index])
-            console.log(cart);
-        }
+    document.getElementById("products").addEventListener("click", (event) => {
+      if (event.target.classList.contains("add")) {
+        cart.push(products[event.target.dataset.index]);
+        console.log(cart);
+      }
     });
-};
+  }
 
 function showCart() {
     document.getElementById("carticon").addEventListener("click", () => {
         document.getElementById("cartexpnd").style.display = "block";
+        // console.log("clicked")
         var clutter = '';
         cart.forEach((prod, index) => {
             clutter += `  <div class="flex gap-2 bg-white p-2 rounded-lg">
@@ -87,7 +88,6 @@ function showCart() {
         document.getElementById("cartexpnd").innerHTML = clutter;
     });
 };
-
 showCart();
 addToCart();
 addProducts();
